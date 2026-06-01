@@ -1,0 +1,49 @@
+name: refresh-resources
+
+on:
+  schedule:
+    - cron: "0 11 * * 1"  # Monday 06:00 America/New_York
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: refresh-resources
+  cancel-in-progress: false
+
+env:
+  TAP: ${{ github.repository_owner }}/tap
+
+jobs:
+  refresh:
+    runs-on: macos-14
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+
+      - name: Stage tap
+        run: |
+          dest="$(brew --repository)/Library/Taps/${{ github.repository_owner }}/homebrew-tap"
+          mkdir -p "$(dirname "$dest")"
+          cp -R "$GITHUB_WORKSPACE" "$dest"
+
+      - name: Refresh Python resources
+        run: brew update-python-resources --tap="$TAP" ansible-security-scanner
+
+      - name: Copy refreshed Formula back to workspace
+        run: cp "$(brew --repository)/Library/Taps/${{ github.repository_owner }}/homebrew-tap/Formula/ansible-security-scanner.rb" Formula/ansible-security-scanner.rb
+
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # v8.1.1
+        with:
+          commit-message: "Refresh Python resources"
+          title: "Refresh Python resources"
+          body: |
+            Weekly refresh of `Formula/ansible-security-scanner.rb` resource pins
+            via `brew update-python-resources`.
+          branch: refresh-python-resources
+          delete-branch: true
+          add-paths: Formula/ansible-security-scanner.rb
+          sign-commits: true
