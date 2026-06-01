@@ -1,0 +1,34 @@
+name: audit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: audit-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TAP: ${{ github.repository_owner }}/tap
+
+jobs:
+  audit:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+
+      - name: Stage tap
+        run: |
+          dest="$(brew --repository)/Library/Taps/${{ github.repository_owner }}/homebrew-tap"
+          mkdir -p "$(dirname "$dest")"
+          cp -R "$GITHUB_WORKSPACE" "$dest"
+
+      - run: brew audit --strict --online --tap="$TAP" ansible-security-scanner
+
+      - run: brew install --build-from-source --verbose ansible-security-scanner
+
+      - run: brew test --verbose ansible-security-scanner
