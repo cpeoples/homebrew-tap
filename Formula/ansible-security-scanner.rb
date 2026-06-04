@@ -3,8 +3,8 @@ class AnsibleSecurityScanner < Formula
 
   desc "Static security scanner (SAST) for Ansible playbooks, roles, and collections"
   homepage "https://github.com/cpeoples/ansible-security-scanner"
-  url "https://files.pythonhosted.org/packages/fa/59/2f60d5276ef482394b66dc1dc159961230c9388e4f2548a0a8a4ee0291de/ansible_security_scanner-0.1.18.tar.gz"
-  sha256 "7ae460f833648eb0660e757033f3eea6787607d1b85ead4d57d9f5c1862ebfb5"
+  url "https://files.pythonhosted.org/packages/5b/a7/fb72356459ff26099ad3bae0e0eda040deb25922f0f6e8db6707d1e095ff/ansible_security_scanner-0.1.19.tar.gz"
+  sha256 "fc1bde0dd6103cc9834c5f535c989f11f6adda7c7e5ba1447616cdc849dd9554"
   license "Apache-2.0"
 
   depends_on "libyaml"
