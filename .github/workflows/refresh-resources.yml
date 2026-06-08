@@ -22,7 +22,14 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - name: Harden Runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411  # v2.19.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
+        with:
+          persist-credentials: false
 
       - name: Stage tap
         run: |
@@ -31,7 +38,7 @@ jobs:
           cp -R "$GITHUB_WORKSPACE" "$dest"
 
       - name: Refresh Python resources
-        run: brew update-python-resources --tap="$TAP" ansible-security-scanner
+        run: brew update-python-resources "$TAP/ansible-security-scanner"
 
       - name: Copy refreshed Formula back to workspace
         run: cp "$(brew --repository)/Library/Taps/${{ github.repository_owner }}/homebrew-tap/Formula/ansible-security-scanner.rb" Formula/ansible-security-scanner.rb
