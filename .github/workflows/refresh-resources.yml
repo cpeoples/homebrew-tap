@@ -44,6 +44,7 @@ jobs:
         run: cp "$(brew --repository)/Library/Taps/${{ github.repository_owner }}/homebrew-tap/Formula/ansible-security-scanner.rb" Formula/ansible-security-scanner.rb
 
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # v8.1.1
+        id: pr
         with:
           commit-message: "Refresh Python resources"
           title: "Refresh Python resources"
@@ -54,3 +55,10 @@ jobs:
           delete-branch: true
           add-paths: Formula/ansible-security-scanner.rb
           sign-commits: true
+
+      - name: Enable auto-merge
+        if: steps.pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.pr.outputs.pull-request-number }}
+        run: gh pr merge "$PR" --auto --squash --delete-branch
