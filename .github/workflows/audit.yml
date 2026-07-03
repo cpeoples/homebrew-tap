@@ -36,6 +36,9 @@ jobs:
           mkdir -p "$(dirname "$dest")"
           cp -R "$GITHUB_WORKSPACE" "$dest"
 
+      - name: Trust tap
+        run: brew trust "$TAP"
+
       - run: brew audit --strict --online --tap="$TAP" ansible-security-scanner
 
       - run: brew install --build-from-source --verbose ansible-security-scanner
