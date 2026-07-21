@@ -1,28 +1,27 @@
 class Grackle < Formula
   desc "Detects fork-triggerable CI coding agents that can write to the repository"
   homepage "https://github.com/cpeoples/grackle"
-  version "0.1.0"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.0/grackle-v0.1.0-aarch64-apple-darwin.tar.gz"
-      sha256 "c6f4011e32eb51869751dfd4db2a84b4379cd1658c3e7acfa3e1d7855197d504"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-aarch64-apple-darwin.tar.gz"
+      sha256 "fc5f482f7211505b2fecd538bb2fcfcd63f2e34522d55cd7146233ca920452a5"
     end
     on_intel do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.0/grackle-v0.1.0-x86_64-apple-darwin.tar.gz"
-      sha256 "cfd53b32a55d6224cfa597dc1833d21fc92d5b389edd49c2f92a34d62aa9deae"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-x86_64-apple-darwin.tar.gz"
+      sha256 "f859930dba5bff636a9e1be545a72f8338338be015faffd6098a820cab2a9e62"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.0/grackle-v0.1.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "001985158a837cf44cea0784a97425c0ef7a5aca81ba91ee3ee03db351a59615"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "0f905c529182e082e0639a7f4155d0d50af76b80ab4e33b3f116e8c3ada60283"
     end
     on_intel do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.0/grackle-v0.1.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "5b0c3b8b1a23dba65715eed6becde54dc75a51e251e504fc7af0b786e316d5b2"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "601913e2706613a91ff3c737e4d246a6cd2b8f4d7125d73e45922982c13f2174"
     end
   end
 
