@@ -1,7 +1,6 @@
 class Grackle < Formula
   desc "Detects fork-triggerable CI coding agents that can write to the repository"
   homepage "https://github.com/cpeoples/grackle"
-  version "0.1.1"
   license "Apache-2.0"
 
   on_macos do
