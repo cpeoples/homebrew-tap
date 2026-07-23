@@ -5,23 +5,23 @@ class Grackle < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-aarch64-apple-darwin.tar.gz"
-      sha256 "fc5f482f7211505b2fecd538bb2fcfcd63f2e34522d55cd7146233ca920452a5"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.2/grackle-v0.1.2-aarch64-apple-darwin.tar.gz"
+      sha256 "4320edc54f186127607a2ce0671cf1b19a9f55577f3a29398a16da8879589f0f"
     end
     on_intel do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-x86_64-apple-darwin.tar.gz"
-      sha256 "f859930dba5bff636a9e1be545a72f8338338be015faffd6098a820cab2a9e62"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.2/grackle-v0.1.2-x86_64-apple-darwin.tar.gz"
+      sha256 "834449be07b54995aaf220aabbe933f2fa67354edc3c483dd0634a85a68c34b0"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "0f905c529182e082e0639a7f4155d0d50af76b80ab4e33b3f116e8c3ada60283"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.2/grackle-v0.1.2-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "1d0c2eca9e206f70f9ee6656f878861d7e543fe95d732d279f94a26f16666327"
     end
     on_intel do
-      url "https://github.com/cpeoples/grackle/releases/download/v0.1.1/grackle-v0.1.1-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "601913e2706613a91ff3c737e4d246a6cd2b8f4d7125d73e45922982c13f2174"
+      url "https://github.com/cpeoples/grackle/releases/download/v0.1.2/grackle-v0.1.2-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "47dfe4cc6c68b0ef79dd404d93a043e57bf66789814a1c7975f3233f172e3da2"
     end
   end
 
